@@ -12,7 +12,7 @@ import slide5 from "../assets/home/slide5.jpg"
 
 const Categories = () => {
     return (
-        <div className='my-12 min-h-[400px]'>
+        <div className='my-12'>
             <Swiper
                 slidesPerView={5}
                 spaceBetween={10}
@@ -20,7 +20,7 @@ const Categories = () => {
                     clickable: true,
                 }}
                 modules={[Pagination]}
-                className="mySwiper"
+                className="mySwiper text-white"
             >
                 <SwiperSlide>
                     <img src={slide1} alt="" />
