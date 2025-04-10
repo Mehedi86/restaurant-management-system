@@ -9,10 +9,12 @@ import slide2 from "../assets/home/slide2.jpg"
 import slide3 from "../assets/home/slide3.jpg"
 import slide4 from "../assets/home/slide4.jpg"
 import slide5 from "../assets/home/slide5.jpg"
+import ReusableHeader from './ReusableHeader';
 
 const Categories = () => {
     return (
         <div className='my-12'>
+            <ReusableHeader header={'ORDER ONLINE'} subHeader={'---From 11:00am to 10:00pm---'}/>
             <Swiper
                 slidesPerView={5}
                 spaceBetween={10}
