@@ -17,7 +17,7 @@ const Categories = () => {
             <ReusableHeader header={'ORDER ONLINE'} subHeader={'---From 11:00am to 10:00pm---'}/>
             <Swiper
                 slidesPerView={5}
-                spaceBetween={10}
+                spaceBetween={40}
                 pagination={{
                     clickable: true,
                 }}
