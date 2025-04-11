@@ -20,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: '/foodRequest',
                 element: <FoodRequest/>
+            },
+            {
+                path: '/dashboard',
+                element: <h2>This is dashboard</h2>
             }
         ]
     }
