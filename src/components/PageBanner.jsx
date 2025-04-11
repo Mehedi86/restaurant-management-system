@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MenuBanner = ({img}) => {
+const PageBanner = ({img}) => {
     return (
         <div style={{backgroundImage: `url(${img})`}} className="w-full h-[600px] flex justify-center items-center">
             <div className='bg-black/40 w-4/6 text-center space-y-4 px-10 py-16 text-white'>
@@ -11,4 +11,4 @@ const MenuBanner = ({img}) => {
     );
 };
 
-export default MenuBanner;
+export default PageBanner;
