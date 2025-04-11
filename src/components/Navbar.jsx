@@ -5,6 +5,7 @@ const Navbar = () => {
     const navItem = <>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/menu">Menu</NavLink>
+        <NavLink to="/foodRequest">Order Food</NavLink>
     </>;
     return (
         <div className="container navbar fixed z-10 bg-black/30 text-white shadow-sm">
