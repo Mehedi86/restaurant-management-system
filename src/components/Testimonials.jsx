@@ -21,11 +21,11 @@ const Testimonials = () => {
             })
     }, [])
     return (
-        <div className='my-20'>
+        <div className='mt-20 mb-40'>
             <ReusableHeader header={'TESTIMONIALS'} subHeader={'---What Our Clients Say---'} />
             <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
                 {reviews.map(review => <SwiperSlide key={review._id}>
-                    <div className='text-center px-20 space-y-2'>
+                    <div className='text-center px-40 space-y-2'>
                         <div className='flex flex-col items-center gap-6 my-6'>
                             <Rating
                                 style={{ maxWidth: 180 }}

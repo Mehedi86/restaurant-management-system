@@ -7,8 +7,10 @@ import CallUs from '../components/CallUs';
 import ChefRecommandation from '../components/ChefRecommandation';
 import Featured from '../components/Featured';
 import Testimonials from '../components/Testimonials';
+import useDynamicTitle from '../hooks/useDynamicTitle';
 
 const Home = () => {
+    useDynamicTitle('Home')
     return (
         <div>
             <Banner/>
