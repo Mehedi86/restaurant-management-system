@@ -6,16 +6,23 @@ import orderImg from '/banner2.jpg'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import FoodCard from '../components/FoodCard';
+import { useParams } from 'react-router-dom';
 
 const FoodRequest = () => {
     useDynamicTitle('Order Food')
-    const [tabIndex, setTabIndex] = useState(0);
+    const categories = ["pizza", "salad", "drinks", "dessert", "soup", "our menu"];
+    const { category } = useParams();
+    const initialIndex = categories.indexOf(category);
+    console.log(initialIndex, category)
+    const [tabIndex, setTabIndex] = useState(initialIndex);
     const [menu] = useMenu();
     const drinks = menu.filter(item => item.category === 'drinks');
     const pizza = menu.filter(item => item.category === 'pizza');
     const soup = menu.filter(item => item.category === 'soup');
     const dessert = menu.filter(item => item.category === 'dessert');
     const salad = menu.filter(item => item.category === 'salad');
+    const offered = menu.filter(item => item.category === 'offered');
+    console.log(offered)
 
 
     return (
@@ -29,6 +36,7 @@ const FoodRequest = () => {
                     <Tab>Drinks</Tab>
                     <Tab>Dessert</Tab>
                     <Tab>Soup</Tab>
+                    <Tab>Offered</Tab>
                 </TabList>
                 <TabPanel>
                     <div className='grid grid-cols-4 gap-4'>
@@ -55,7 +63,11 @@ const FoodRequest = () => {
                         {soup.map(item => <FoodCard key={item._id} item={item} />)}
                     </div>
                 </TabPanel>
-
+                <TabPanel>
+                    <div className='grid grid-cols-4 gap-4'>
+                        {offered.map(item => <FoodCard key={item._id} item={item} />)}
+                    </div>
+                </TabPanel>
             </Tabs>
 
         </div>

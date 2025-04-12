@@ -2,6 +2,7 @@ import React from 'react';
 import ReusableHeader from './ReusableHeader';
 import MenuItem from './MenuItem';
 import Cover from './Cover';
+import { Link } from 'react-router-dom';
 
 const MenuCategory = ({ items, header, subHeader, img, title, subtitle }) => {
 
@@ -13,7 +14,7 @@ const MenuCategory = ({ items, header, subHeader, img, title, subtitle }) => {
                 {items.map(item => <MenuItem key={item._id} item={item} />)}
             </div>
             <div className='flex justify-center mt-12'>
-                <button className="cursor-pointer text-[#BB8506] bg-gray-100 rounded-xl px-4 py-2 border-b-2 border-[#BB8506] hover:scale-95 hover:bg-[#1F2937]">ORDER YOUR FAVOURITE FOOD</button>
+                <Link to={`/foodRequest/${title}`} className="cursor-pointer text-[#BB8506] bg-gray-100 rounded-xl px-4 py-2 border-b-2 border-[#BB8506] hover:scale-95 hover:bg-[#1F2937]">ORDER YOUR FAVOURITE FOOD</Link>
             </div>
         </div>
     );

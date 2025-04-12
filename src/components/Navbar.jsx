@@ -6,7 +6,7 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/menu">Menu</NavLink>
         <NavLink to="/dashboard">Dashboard</NavLink>
-        <NavLink to="/foodRequest">Order Food</NavLink>
+        <NavLink to="/foodRequest/pizza">Order Food</NavLink>
     </>;
     return (
         <div className="container navbar fixed z-10 bg-black/30 text-white shadow-sm">
