@@ -1,10 +1,26 @@
-import React from 'react';
+import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import useDynamicTitle from '../hooks/useDynamicTitle';
 import LoginImg from '../assets/others/authentication2.png'
+import correct from '/correct.png'
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
     useDynamicTitle('Login')
+    const [disabled, setDisabled] = useState(true);
+    useEffect(() => {
+        loadCaptchaEnginge(6, 'transparent');
+    }, [])
+
+    const handleChange = e => {
+        if (e.target.value.length === 6) {
+            if (validateCaptcha(e.target.value)) {
+                setDisabled(false);
+            }
+        }
+    }
+
     return (
         <div className='min-h-screen flex justify-center items-center bg-[url(/authentication.png)]'>
             <div className='min-h-[calc(screen-80px)] flex justify-center items-center bg-[url(/authentication.png)] shadow-2xl'>
@@ -15,10 +31,14 @@ const Login = () => {
                         <input type="email" className="input w-full" placeholder="Email" name="email" />
                         <label className="fieldset-label">Password</label>
                         <input type="password" className="input w-full" placeholder="Password" name="password" />
-                        <input type="password" className="input mt-3 w-full" placeholder="Recapcha" name="password" />
-                        <label className="fieldset-label text-[#5D5FEF] font-semibold">Reload Recapcha</label>
-                        <input type="password" className="input w-full" placeholder="Enter Recapcha" name="password" />
-                        <button className="btn bg-[#D1A054B3] mt-4">Login</button>
+                        <Link className='text-gray-600'>Forget password??</Link>
+
+                        <div className='p-4 flex justify-between items-center'>
+                            <LoadCanvasTemplate />
+                            <img className={`${disabled ? 'hidden' : ''} w-6 h-6`} src={correct} alt="" />
+                        </div>
+                        <input onChange={handleChange} type="text" className="input w-full" placeholder="Type the Text Above" name="capcha" />
+                        <button disabled={disabled} className="btn bg-[#D1A054B3] mt-4">Login</button>
                         <div className="divider">OR</div>
                     </form>
                 </div>
