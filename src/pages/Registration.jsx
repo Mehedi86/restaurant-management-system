@@ -3,19 +3,22 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import LoginImg from '../assets/others/authentication2.png'
 import { AuthContext } from '../providers/AuthProvider';
+import { useForm } from "react-hook-form"
 
 const Registration = () => {
-    const {createUser} = useContext(AuthContext);
-    const handleRegi = e => {
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
+    const { createUser } = useContext(AuthContext);
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
 
-        createUser(email, password).then(res=> {
-            console.log(res.user)
-        })
+    const onSubmit = data => {
+        console.log(data)
+        // createUser(email, password).then(res => {
+        //     console.log(res.user)
+        // })
     }
     return (
         <div className='bg-[url(/authentication.png)] min-h-screen'>
@@ -30,15 +33,15 @@ const Registration = () => {
                     </div>
                     <div className="card-body flex items-center">
                         <h2 className='text-2xl font-bold text-center mt-6'>Sign Up</h2>
-                        <form onSubmit={handleRegi} className="fieldset w-sm">
+                        <form onSubmit={handleSubmit(onSubmit)} className="fieldset w-sm">
                             <label className="fieldset-label">Name</label>
-                            <input type="text" className="input w-full" placeholder="Name" name="name" />
+                            <input type="text"  {...register("name")} className="input w-full" placeholder="Name" name="name" />
                             <label className="fieldset-label">Email</label>
-                            <input type="email" className="input w-full" placeholder="Email" name="email" />
+                            <input type="email" {...register("email", { required: true })} className="input w-full" placeholder="Email" name="email" />
                             <label className="fieldset-label">Password</label>
-                            <input type="password" className="input w-full" placeholder="Password" name="password" />
+                            <input type="password" {...register("password", { required: true })} className="input w-full" placeholder="Password" name="password" />
                             <Link className='text-gray-600'>Forget password??</Link>
-
+                            {errors.exampleRequired && <span>This field is required</span>}
 
 
                             <button className="btn bg-[#D1A054B3] mt-4">Sign Up</button>
